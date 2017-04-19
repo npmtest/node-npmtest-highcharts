@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for node-npmtest-highcharts/node_modules/highcharts/modules/annotations.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-highcharts">npmtest-highcharts (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-highcharts/node_modules/highcharts/modules/annotations.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">2.53% <small>(2 / 79)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">3.26% <small>(3 / 92)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">6.25% <small>(1 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">14.29% <small>(1 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-highcharts/node_modules/highcharts/modules/</a> &#187; annotations.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*
+ Highcharts JS v5.0.10 (2017-03-31)
+&nbsp;
+ (c) 2009-2017 Torstein Honsi
+&nbsp;
+ License: www.highcharts.com/license
+*/
+(function(n){"object"===typeof module&amp;&amp;module.exports?module.exports=n:<span class="branch-1 cbranch-no" title="branch not covered" >n(Highcharts)}</span>)(<span class="fstat-no" title="function not covered" >function(n){<span class="cstat-no" title="statement not covered" ></span>(<span class="fstat-no" title="function not covered" >function(f){<span class="cstat-no" title="statement not covered" ></span>var q=f.defined,k=f.isNumber,n=f.inArray,v=f.isArray,w=f.merge,B=f.Chart,x=f.extend,C=f.each,r,D;<span class="cstat-no" title="statement not covered" >D</span>=["path","rect","circle"];<span class="cstat-no" title="statement not covered" >r</span>={top:0,left:0,center:.5,middle:.5,bottom:1,right:1};<span class="cstat-no" title="statement not covered" >v</span>ar E=<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>this.init.apply(this,arguments)}</span>;<span class="cstat-no" title="statement not covered" >E</span>.prototype={init:<span class="fstat-no" title="function not covered" >function(a,d){<span class="cstat-no" title="statement not covered" ></span>var c=d.shape&amp;&amp;d.shape.type;<span class="cstat-no" title="statement not covered" >t</span>his.chart=a;<span class="cstat-no" title="statement not covered" >v</span>ar b;<span class="cstat-no" title="statement not covered" >b</span>={xAxis:0,yAxis:0,title:{style:{},text:"",x:0,y:0},shape:{params:{stroke:"#000000",</span></span></span>
+fill:"transparent",strokeWidth:2}}};<span class="cstat-no" title="statement not covered" >a={circle:{params:{x:0,y:0}}};<span class="cstat-no" title="statement not covered" >a</span>[c]&amp;&amp;(b.shape=w(b.shape,a[c]));<span class="cstat-no" title="statement not covered" >t</span>his.options=w({},b,d)}</span>,render:<span class="fstat-no" title="function not covered" >function(a){<span class="cstat-no" title="statement not covered" ></span>var d=this.chart,c=this.chart.renderer,b=this.group,f=this.title,e=this.shape,h=this.options,k=h.title,p=h.shape;<span class="cstat-no" title="statement not covered" >b</span>||(b=this.group=c.g());<span class="cstat-no" title="statement not covered" >!</span>e&amp;&amp;p&amp;&amp;-1!==n(p.type,D)&amp;&amp;(e=this.shape=c[h.shape.type](p.params),e.add(b));<span class="cstat-no" title="statement not covered" >!</span>f&amp;&amp;k&amp;&amp;(f=this.title=c.label(k),f.add(b));<span class="cstat-no" title="statement not covered" >b</span>.add(d.annotations.group);<span class="cstat-no" title="statement not covered" >t</span>his.linkObjects();<span class="cstat-no" title="statement not covered" >!</span>1!==a&amp;&amp;this.redraw()}</span>,redraw:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var a=this.options,</span>
+d=this.chart,c=this.group,b=this.title,F=this.shape,e=this.linkedObject,h=d.xAxis[a.xAxis],d=d.yAxis[a.yAxis],y=a.width,p=a.height,z=r[a.anchorY],A=r[a.anchorX],t,l,g,u;<span class="cstat-no" title="statement not covered" >e&amp;&amp;(t=e instanceof f.Point?"point":e instanceof f.Series?"series":null,"point"===t?(a.xValue=e.x,a.yValue=e.y,l=e.series):"series"===t&amp;&amp;(l=e),c.visibility!==l.group.visibility&amp;&amp;c.attr({visibility:l.group.visibility}));<span class="cstat-no" title="statement not covered" >e</span>=q(a.xValue)?h.toPixels(a.xValue+h.minPointOffset)-h.minPixelPadding:a.x;<span class="cstat-no" title="statement not covered" >l</span>=q(a.yValue)?d.toPixels(a.yValue):a.y;<span class="cstat-no" title="statement not covered" >i</span>f(k(e)&amp;&amp;</span>
+k(l)){<span class="cstat-no" title="statement not covered" >b&amp;&amp;(b.attr(a.title),b.css(a.title.style));<span class="cstat-no" title="statement not covered" >i</span>f(F){<span class="cstat-no" title="statement not covered" >b=x({},a.shape.params);<span class="cstat-no" title="statement not covered" >i</span>f("values"===a.units){<span class="cstat-no" title="statement not covered" >for(g in b)<span class="cstat-no" title="statement not covered" >-1&lt;n(g,["width","x"])?b[g]=h.translate(b[g]):-1&lt;n(g,["height","y"])&amp;&amp;(b[g]=d.translate(b[g]));<span class="cstat-no" title="statement not covered" >b</span></span>.width&amp;&amp;(b.width-=h.toPixels(0)-h.left);<span class="cstat-no" title="statement not covered" >b</span>.x&amp;&amp;(b.x+=h.minPixelPadding);<span class="cstat-no" title="statement not covered" >i</span>f("path"===a.shape.type){<span class="cstat-no" title="statement not covered" >g=b.d;<span class="cstat-no" title="statement not covered" >t</span>=e;<span class="cstat-no" title="statement not covered" >f</span>or(var v=l,w=g.length,m=0;m&lt;w;)<span class="cstat-no" title="statement not covered" >k(g[m])&amp;&amp;k(g[m+1])?(g[m]=h.toPixels(g[m])-t,g[m+1]=d.toPixels(g[m+1])-v,m+=2):m+=1}</span></span>}<span class="cstat-no" title="statement not covered" ></span>"</span>circle"===a.shape.type&amp;&amp;(b.x+=b.r,b.y+=b.r);<span class="cstat-no" title="statement not covered" >F</span>.attr(b)}<span class="cstat-no" title="statement not covered" ></span>c</span>.bBox=null;<span class="cstat-no" title="statement not covered" >k</span>(y)||</span>
+(u=c.getBBox(),y=u.width);<span class="cstat-no" title="statement not covered" >k(p)||(u||(u=c.getBBox()),p=u.height);<span class="cstat-no" title="statement not covered" >k</span>(A)||(A=r.center);<span class="cstat-no" title="statement not covered" >k</span>(z)||(z=r.center);<span class="cstat-no" title="statement not covered" >e</span>-=y*A;<span class="cstat-no" title="statement not covered" >l</span>-=p*z;<span class="cstat-no" title="statement not covered" >q</span>(c.translateX)&amp;&amp;q(c.translateY)?c.animate({translateX:e,translateY:l}):c.translate(e,l)}</span>},destroy:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var a=this,d=this.chart.annotations.allItems,c=d.indexOf(a);<span class="cstat-no" title="statement not covered" >-</span>1&lt;c&amp;&amp;d.splice(c,1);<span class="cstat-no" title="statement not covered" >C</span>(["title","shape","group"],<span class="fstat-no" title="function not covered" >function(b){<span class="cstat-no" title="statement not covered" ></span>a[b]&amp;&amp;(a[b].destroy(),a[b]=null)}</span>);<span class="cstat-no" title="statement not covered" >a</span>.group=a.title=a.shape=a.chart=a.options=null}</span>,update:<span class="fstat-no" title="function not covered" >function(a,d){<span class="cstat-no" title="statement not covered" ></span>x(this.options,a);<span class="cstat-no" title="statement not covered" >t</span>his.linkObjects();<span class="cstat-no" title="statement not covered" >t</span>his.render(d)}</span>,
+linkObjects:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>var a=this.chart,d=this.linkedObject,c=d&amp;&amp;(d.id||d.options.id),b=this.options.linkedTo;<span class="cstat-no" title="statement not covered" >q</span>(b)?q(d)&amp;&amp;b===c||(this.linkedObject=a.get(b)):this.linkedObject=null}</span>};<span class="cstat-no" title="statement not covered" >x(B.prototype,{annotations:{add:<span class="fstat-no" title="function not covered" >function(a,d){<span class="cstat-no" title="statement not covered" ></span>var c=this.allItems,b=this.chart,f,e;<span class="cstat-no" title="statement not covered" >v</span>(a)||(a=[a]);<span class="cstat-no" title="statement not covered" >f</span>or(e=a.length;e--;)<span class="cstat-no" title="statement not covered" >f=new E(b,a[e]),c.push(f),f.render(d)}</span></span>,redraw:<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>C(this.allItems,<span class="fstat-no" title="function not covered" >function(a){<span class="cstat-no" title="statement not covered" ></span>a.redraw()}</span>)}</span>}});<span class="cstat-no" title="statement not covered" >B</span>.prototype.callbacks.push(<span class="fstat-no" title="function not covered" >function(a){<span class="cstat-no" title="statement not covered" ></span>var d=a.options.annotations,c;<span class="cstat-no" title="statement not covered" >c</span>=a.renderer.g("annotations");<span class="cstat-no" title="statement not covered" >c</span>.attr({zIndex:7});</span></span>
+<span class="cstat-no" title="statement not covered" >c.add();<span class="cstat-no" title="statement not covered" >a</span>.annotations.allItems=[];<span class="cstat-no" title="statement not covered" >a</span>.annotations.chart=a;<span class="cstat-no" title="statement not covered" >a</span>.annotations.group=c;<span class="cstat-no" title="statement not covered" >v</span>(d)&amp;&amp;0&lt;d.length&amp;&amp;a.annotations.add(a.options.annotations);<span class="cstat-no" title="statement not covered" >f</span>.addEvent(a,"redraw",<span class="fstat-no" title="function not covered" >function(){<span class="cstat-no" title="statement not covered" ></span>a.annotations.redraw()}</span>)}</span>)})(n)});
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 19 2017 13:17:40 GMT+0000 (UTC)</div>
+</div>
+</body>
+</html>
